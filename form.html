@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Submit Data</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 720px; margin: 40px auto; padding: 0 16px; }
+    .error { color: #b00020; background: #ffecec; padding: 8px; border-radius: 4px; margin-bottom: 12px; }
+    .success { color: #0a7a00; background: #eeffef; padding: 8px; border-radius: 4px; margin-bottom: 12px; }
+    label { display:block; margin-top: 8px; }
+    input, textarea { width:100%; padding:8px; margin-top:4px; box-sizing: border-box; }
+    button { margin-top: 12px; padding:10px 16px; }
+  </style>
+</head>
+<body>
+  <h1>Submit Data</h1>
+
+  <!-- Flask flashed messages -->
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, msg in messages %}
+        <div class="{{ 'error' if category == 'error' else 'success' }}">{{ msg }}</div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+
+  <form method="post" action="{{ url_for('submit') }}">
+    <label>
+      Name *
+      <input type="text" name="name" value="{{ name|default('') }}" required />
+    </label>
+
+    <label>
+      Email *
+      <input type="email" name="email" value="{{ email|default('') }}" required />
+    </label>
+
+    <label>
+      Message
+      <textarea name="message" rows="6">{{ message|default('') }}</textarea>
+    </label>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <hr/>
+  <p>Test the API that returns data from the backend file: <a href="/api" target="_blank">/api</a></p>
+</body>
+</html>

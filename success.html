@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Success</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 720px; margin: 40px auto; padding: 0 16px; }
+    .notice { padding: 20px; background: #f0fff4; border: 1px solid #d3f0d9; border-radius: 8px; }
+    a { display:inline-block; margin-top: 12px; }
+  </style>
+</head>
+<body>
+  <div class="notice">
+    <h1>Data submitted successfully</h1>
+    <p>Thank you. Your data has been saved.</p>
+    <a href="{{ url_for('form') }}">Submit another</a>
+  </div>
+</body>
+</html>
